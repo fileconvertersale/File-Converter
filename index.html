@@ -7,10 +7,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-blue: #2563eb;
-            --secondary-blue: #3b82f6;
-            --light-blue: #dbeafe;
-            --dark-blue: #1e40af;
+            --primary-yellow: #f59e0b;
+            --secondary-yellow: #fbbf24;
+            --light-yellow: #fef3c7;
+            --dark-yellow: #d97706;
+            --accent-blue: #3b82f6;
             --text-dark: #1f2937;
             --text-light: #6b7280;
             --white: #ffffff;
@@ -59,8 +60,15 @@
         .logo {
             font-size: 1.8rem;
             font-weight: 700;
-            color: var(--primary-blue);
+            color: var(--primary-yellow);
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            font-size: 2rem;
         }
 
         .nav-links {
@@ -73,10 +81,26 @@
             color: var(--text-dark);
             font-weight: 500;
             transition: var(--transition);
+            position: relative;
         }
 
         .nav-links a:hover {
-            color: var(--primary-blue);
+            color: var(--primary-yellow);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-yellow);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
         .contact-email {
@@ -98,15 +122,30 @@
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
-            color: var(--white);
+            background: linear-gradient(135deg, var(--primary-yellow) 0%, var(--secondary-yellow) 100%);
+            color: var(--text-dark);
             padding: 80px 0;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.3;
         }
 
         .hero-content {
             max-width: 800px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
         .hero h1 {
@@ -124,7 +163,7 @@
         .cta-button {
             display: inline-block;
             background-color: var(--white);
-            color: var(--primary-blue);
+            color: var(--text-dark);
             padding: 12px 30px;
             border-radius: var(--border-radius);
             font-weight: 600;
@@ -136,6 +175,7 @@
         .cta-button:hover {
             transform: translateY(-3px);
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            background-color: var(--light-yellow);
         }
 
         .tool-icons {
@@ -155,7 +195,7 @@
 
         .tool-icon i {
             font-size: 2.5rem;
-            background-color: rgba(255, 255, 255, 0.2);
+            background-color: rgba(255, 255, 255, 0.3);
             padding: 15px;
             border-radius: 50%;
         }
@@ -184,8 +224,8 @@
 
         .search-bar:focus {
             outline: none;
-            border-color: var(--primary-blue);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+            border-color: var(--primary-yellow);
+            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2);
         }
 
         .search-icon {
@@ -210,6 +250,10 @@
             font-size: 2rem;
             margin-bottom: 10px;
             color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
 
         .section-header p {
@@ -233,6 +277,7 @@
             display: flex;
             flex-direction: column;
             height: 100%;
+            border-top: 4px solid var(--primary-yellow);
         }
 
         .tool-card:hover {
@@ -242,7 +287,7 @@
 
         .tool-icon-small {
             font-size: 1.8rem;
-            color: var(--primary-blue);
+            color: var(--primary-yellow);
             margin-bottom: 15px;
         }
 
@@ -260,8 +305,8 @@
         }
 
         .use-tool-btn {
-            background-color: var(--light-blue);
-            color: var(--primary-blue);
+            background-color: var(--light-yellow);
+            color: var(--text-dark);
             border: none;
             padding: 10px 15px;
             border-radius: var(--border-radius);
@@ -274,8 +319,7 @@
         }
 
         .use-tool-btn:hover {
-            background-color: var(--primary-blue);
-            color: var(--white);
+            background-color: var(--primary-yellow);
         }
 
         /* Footer */
@@ -301,7 +345,7 @@
         .footer-logo h3 {
             font-size: 1.8rem;
             margin-bottom: 10px;
-            color: var(--white);
+            color: var(--primary-yellow);
         }
 
         .footer-logo p {
@@ -318,6 +362,7 @@
         .footer-links-column h4 {
             margin-bottom: 15px;
             font-size: 1.1rem;
+            color: var(--white);
         }
 
         .footer-links-column ul {
@@ -335,7 +380,7 @@
         }
 
         .footer-links-column ul li a:hover {
-            color: var(--white);
+            color: var(--primary-yellow);
         }
 
         .footer-bottom {
@@ -367,7 +412,7 @@
         }
 
         .footer-links-bottom a:hover {
-            color: var(--white);
+            color: var(--primary-yellow);
         }
 
         /* Responsive Styles */
@@ -440,7 +485,10 @@
     <!-- Header -->
     <header>
         <div class="container header-container">
-            <a href="#" class="logo">Tools Wonder</a>
+            <a href="#" class="logo">
+                <i class="fas fa-tools"></i>
+                FILE CONVERTER
+            </a>
             
             <nav class="nav-links">
                 <a href="#">Home</a>
@@ -504,7 +552,7 @@
         <div class="container">
             <!-- Image Tools -->
             <div class="section-header">
-                <h2>🖼 Image Tools</h2>
+                <h2><i class="fas fa-image"></i> Image Tools</h2>
                 <p>Edit, convert, and optimize your images with our powerful image tools</p>
             </div>
             <div class="tools-grid">
@@ -552,7 +600,7 @@
         <div class="container">
             <!-- Document Tools -->
             <div class="section-header">
-                <h2>📄 Document Tools</h2>
+                <h2><i class="fas fa-file-alt"></i> Document Tools</h2>
                 <p>Manage, convert, and edit your documents with ease</p>
             </div>
             <div class="tools-grid">
@@ -600,7 +648,7 @@
         <div class="container">
             <!-- Calculator Tools -->
             <div class="section-header">
-                <h2>🧮 Calculator Tools</h2>
+                <h2><i class="fas fa-calculator"></i> Calculator Tools</h2>
                 <p>Perform calculations for various purposes with our calculator tools</p>
             </div>
             <div class="tools-grid">
@@ -658,7 +706,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <h3>Tools Wonder</h3>
+                    <h3><i class="fas fa-tools"></i> FILE CONVERTER</h3>
                     <p>Simplifying your digital life with powerful, easy-to-use tools for all your needs.</p>
                 </div>
                 
